@@ -15,8 +15,8 @@ export default async function handler(
     // Try to set up webhook address
     try {
         await bot.api.setWebhook(address);
-        return new Response("Done. Set");
+        res.status(200).json({ status: 'Done. Set!' })
     } catch (_) {
-        return new Response("Couldn't succeed with installing webhook");
+        res.status(500).json({ status: 'Couldn\'t succeed with installing webhook!' })
     }
 }
