@@ -1,5 +1,5 @@
 import { Composer, Context } from "grammy";
-import * as start from "@/functions/start.ts";
+import * as start from "@/functions/start";
 
 const composer = new Composer();
 
