@@ -1,5 +1,6 @@
 import {Bot, Context, webhookCallback} from "grammy";
 import type { NextApiRequest, NextApiResponse } from "next";
+import {handle} from "@/core/bot";
 
 export default async function handler(
   req: NextApiRequest,
@@ -14,5 +15,5 @@ export default async function handler(
 
   bot.on("message", (ctx) => ctx.reply("Got another message!"));
 
-  await webhookCallback(bot, "http");
+  return await handle(req, res);
 }
