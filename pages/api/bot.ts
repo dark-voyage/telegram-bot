@@ -12,13 +12,7 @@ export default async function handler(
 
   const bot = new Bot(token);
 
-  bot.command('start', async (ctx: Context) => {
-    await ctx.reply('Hi!')
-  })
-
-  bot.command('help', async (ctx: Context) => {
-    await ctx.reply('Hello')
-  })
+  bot.on("message", (ctx) => ctx.reply("Got another message!"));
 
   await webhookCallback(bot, "http");
 }
