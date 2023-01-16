@@ -1,19 +1,20 @@
 import {Bot, Context, webhookCallback} from "grammy";
 import type { NextApiRequest, NextApiResponse } from "next";
-import {handle} from "@/core/bot";
+import functions from "@/functions";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  // Token from ENV
-  const token = process.env.TOKEN || "";
+  // Initialize a bot instance
+  const bot = new Bot(process.env.TOKEN || "");
 
-  if (token) throw new Error("No Telegram bot token!");
+  // Append all middlewares to bot
+  await functions(bot);
 
-  const bot = new Bot(token);
+  // Create a request handler
+  const handle = webhookCallback(bot, "next-js");
 
-  bot.on("message", (ctx) => ctx.reply("Got another message!"));
-
+  // Return the handler to Vercel api
   return await handle(req, res);
 }
