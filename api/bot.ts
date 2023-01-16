@@ -1,7 +1,10 @@
 import { Bot, webhookCallback } from "grammy";
+import * as process from "process";
+
+const token: string = process.env.TOKEN || "";
 
 // Bot instance
-const bot = new Bot(process.env.BOT_TOKEN);
+const bot = new Bot(token);
 
 // Commands
 bot.command("start", (ctx) => ctx.reply("Welcome! Up and running."));
