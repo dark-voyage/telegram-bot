@@ -1,4 +1,4 @@
-import { Bot, webhookCallback } from "grammy";
+import {Bot, Context, webhookCallback} from "grammy";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
@@ -11,6 +11,14 @@ export default async function handler(
   if (token) throw new Error("No Telegram bot token!");
 
   const bot = new Bot(token);
+
+  bot.command('start', async (ctx: Context) => {
+    await ctx.reply('Hi!')
+  })
+
+  bot.command('help', async (ctx: Context) => {
+    await ctx.reply('Hello')
+  })
 
   await webhookCallback(bot, "http");
 }
