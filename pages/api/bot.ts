@@ -5,6 +5,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  // Token from ENV
   const token = process.env.TOKEN || "";
 
   if (token) throw new Error("No Telegram bot token!");
