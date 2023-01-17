@@ -1,4 +1,5 @@
-#!/usr/bin/env ts-node
+#!/usr/bin/env node
+
 import { Bot, Context, webhookCallback } from "grammy";
 import functions from "@/functions";
 
