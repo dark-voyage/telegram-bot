@@ -14,7 +14,7 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 RUN npm i -g pnpm
-RUN pnpm build
+RUN pnpm webhook:build
 
 FROM node:18-alpine AS runner
 WORKDIR /app
