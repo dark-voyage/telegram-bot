@@ -2,6 +2,7 @@
   "name": "telegram-bot",
   "version": "0.1.0",
   "private": true,
+  "main": "dist/dev.js",
   "scripts": {
     "lint": "next lint",
     "format": "prettier --check --write \"{**/*,*}.{ts,tsx}\"",
