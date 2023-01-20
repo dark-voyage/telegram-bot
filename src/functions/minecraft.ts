@@ -14,7 +14,7 @@ export const message = (data: Minecraft): string =>
   `\n` +
   `<b>➿ Software:</b> Vanilla ${data.content.version.name}` +
   `\n` +
-  `<b>🎛 Address:</b> mc.cxsmxs.moe` +
+  `<b>🎛 Address:</b> mc.cxsmxs.space` +
   `\n` +
   `\n` +
   `${
