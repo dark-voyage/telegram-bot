@@ -40,9 +40,7 @@ export const message = (live: Liveness, read: Readiness): string =>
   `\n` +
   `<b>😺 Gitaly:</b> <code>${
     read.gitaly_check[0].status === "ok" ? "Stable" : "Unstable"
-  }</code>` +
-  `\n` +
-  `<b>🎛 Address:</b> https://cxsmxs.space`;
+  }</code>`;
 
 export const keyboard = () =>
   new InlineKeyboard()
@@ -50,7 +48,9 @@ export const keyboard = () =>
     .url("🔴 Monitor", `https://cxsmxs.space/admin/health_check`)
     .row()
     .url("👾 Jobs", "https://cxsmxs.space/admin/background_jobs")
-    .url("🌐 System", `https://cxsmxs.space/admin/system_info`);
+    .url("📊 System", `https://cxsmxs.space/admin/system_info`)
+    .row()
+    .url("🌐 Open GitLab", `https://cxsmxs.space`)");
 
 composer.command("git", async (ctx: Context) => {
   try {
