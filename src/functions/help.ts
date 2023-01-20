@@ -9,7 +9,7 @@ export const message =
   `\n` +
   `/help - <code>show this message</code>` +
   `\n` +
-  `/stacks - <code>stackoverflow profile</code>` +
+  `/git - <code>get gitlab status</code>` +
   `\n` +
   `/mc - <code>minecraft server</code>` +
   `\n`;
