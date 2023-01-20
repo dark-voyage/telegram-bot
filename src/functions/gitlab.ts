@@ -1,3 +1,4 @@
+import crypto from "crypto";
 import type { Response as Minecraft } from "@/types/minecraft";
 import { Composer, Context, InlineKeyboard, InputFile } from "grammy";
 
@@ -13,7 +14,7 @@ export const message = (data: Minecraft): string =>
   `\n` +
   `<b>➿ Software:</b> Vanilla ${data.content.version.name}` +
   `\n` +
-  `<b>🎛 Address:</b> owo.uwussi.moe` +
+  `<b>🎛 Address:</b> mc.cxsmxs.space` +
   `\n` +
   `\n` +
   `${

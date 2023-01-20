@@ -1,3 +1,4 @@
+import crypto from "crypto";
 import type { Response as Minecraft } from "@/types/minecraft";
 import { Composer, Context, InlineKeyboard, InputFile } from "grammy";
 
@@ -41,7 +42,7 @@ composer.command("mc", async (ctx: Context) => {
           await ctx.replyWithPhoto(
             new InputFile({
               url:
-                "https://raw.githubusercontent.com/uwussimo/website/main/public/favicons/cxsmxs.png",
+                "https://raw.githubusercontent.com/katsuki-yuri/website/main/public/favicons/cxsmxs.png",
             }),
             {
               caption: message(json),
@@ -60,6 +61,7 @@ composer.command("mc", async (ctx: Context) => {
       },
     );
   } catch (_) {
+    console.error(_)
     await ctx.reply(
       "<b>Woah, seems like I'm facing some issues 😢.</b>" + "\n" +
         "I don't remember myself installing php, python or apache in my server 🧐",
