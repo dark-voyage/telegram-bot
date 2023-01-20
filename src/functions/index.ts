@@ -1,8 +1,12 @@
 import { Bot } from "grammy";
-import start from "@/functions/start";
 import help from "@/functions/help";
+import start from "@/functions/start";
+import minecraft from "@/functions/minecraft";
 
-export default async (bot: Bot) => {
+const functions = async (bot: Bot) => {
   await bot.use(start);
   await bot.use(help);
+  await bot.use(minecraft);
 };
+
+export default functions;
