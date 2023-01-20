@@ -50,7 +50,7 @@ export const keyboard = () =>
     .url("👾 Jobs", "https://cxsmxs.space/admin/background_jobs")
     .url("📊 System", `https://cxsmxs.space/admin/system_info`)
     .row()
-    .url("🌐 Open GitLab", `https://cxsmxs.space`)");
+    .url("🌐 Open GitLab", "https://cxsmxs.space");
 
 composer.command("git", async (ctx: Context) => {
   try {
