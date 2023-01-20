@@ -42,7 +42,7 @@ export const message = (live: Liveness, read: Readiness): string =>
     read.gitaly_check[0].status === "ok" ? "Stable" : "Unstable"
   }</code>` +
   `\n` +
-  `<b>🎛 Address:</b> https://mc.cxsmxs.space`;
+  `<b>🎛 Address:</b> https://cxsmxs.space`;
 
 export const keyboard = () =>
   new InlineKeyboard()
