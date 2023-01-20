@@ -1,107 +1,107 @@
 import crypto from "crypto";
 import type { Response as Minecraft } from "@/types/minecraft";
 import { Composer, Context, InlineKeyboard, InputFile } from "grammy";
+import * as process from "process";
+import { Liveness, Readiness } from "@/types/gitlab";
 
 const composer = new Composer();
 
-export const message = (data: Minecraft): string =>
-  `<b>Server Stats (#${crypto.randomUUID().substring(0, 6)})!</b>` +
+export const message = (live: Liveness, read: Readiness): string =>
+  `<b>CXSMXS Space Stats (#${crypto.randomUUID().substring(0, 6)})!</b>` +
   `\n` +
   `\n` +
-  `<b>🚨️ Online:</b> ${data.status ? "Yup" : "Nah"}` +
+  `<b>🚨️ Readiness:</b> <code>${
+    read.status === "ok" ? "Stable" : "Unstable"
+  }</code>` +
   `\n` +
-  `<b>👥 Players:</b> <code>${data.content.players.online}/${data.content.players.max}</code>` +
+  `<b>💓 Liveness:</b> <code>${
+    live.status === "ok" ? "Stable" : "Unstable"
+  }</code>` +
   `\n` +
-  `<b>➿ Software:</b> Vanilla ${data.content.version.name}` +
+  `<b>📚 Database:</b> <code>${
+    read.db_check[0].status === "ok" ? "Stable" : "Unstable"
+  }</code>` +
   `\n` +
-  `<b>🎛 Address:</b> mc.cxsmxs.space` +
+  `<b>📝 Cache:</b> <code>${
+    read.cache_check[0].status === "ok" ? "Stable" : "Unstable"
+  }</code>` +
   `\n` +
+  `<b>👥 Sessions:</b> <code>${
+    read.sessions_check[0].status === "ok" ? "Stable" : "Unstable"
+  }</code>` +
   `\n` +
-  `${
-    data.content.players.sample
-      ? data.content.players.sample.map((user) => `👾 <code>${user.name}</code>`)
-        .join("\n")
-      : ""
-  }`;
+  `<b>➿ Shared States:</b> <code>${
+    read.shared_state_check[0].status === "ok" ? "Stable" : "Unstable"
+  }</code>` +
+  `\n` +
+  `<b>💳 Master Check:</b> <code>${
+    read.master_check[0].status === "ok" ? "Stable" : "Unstable"
+  }</code>` +
+  `\n` +
+  `<b>😺 Gitaly:</b> <code>${
+    read.gitaly_check[0].status === "ok" ? "Stable" : "Unstable"
+  }</code>` +
+  `\n` +
+  `<b>🎛 Address:</b> mc.cxsmxs.space`;
 
 export const keyboard = () =>
   new InlineKeyboard()
-    .text("🔁 Refresh", "mc")
-    .url("🔴 Web (Live)", `https://katsuki.moe/minecraft`).row()
-    .url("📝 Rules of the server", `https://katsuki.moe/minecraft/rules`).row()
-    .url("👾 Discord", "https://discord.gg/JkXFQpScFj")
-    .url("🌐 Repository", `https://github.com/uwucraft`);
+    .text("🔁 Refresh", "git")
+    .url("🔴 Monitor", `https://cxsmxs.space/admin/health_check`)
+    .row()
+    .url("👾 Jobs", "https://cxsmxs.space/admin/background_jobs")
+    .url("🌐 System", `https://cxsmxs.space/admin/system_info`);
 
-composer.command("mc", async (ctx: Context) => {
+composer.command("git", async (ctx: Context) => {
   try {
-    await fetch("https://katsuki.moe/api/minecraft").then(
-      async (r: Response) => {
-        const json: Minecraft = await r.json();
+    const readiness: Readiness = await (
+      await fetch(
+        `https://cxsmxs.space/-/readiness?token=${process.env.GITLAB}&all=1`
+      )
+    ).json();
+    const liveness: Liveness = await (
+      await fetch(`https://cxsmxs.space/-/liveness?token=${process.env.GITLAB}`)
+    ).json();
 
-        if (json.status) {
-          await ctx.replyWithPhoto(
-            new InputFile({
-              url:
-                "https://raw.githubusercontent.com/uwussimo/website/main/public/favicons/cxsmxs.png",
-            }),
-            {
-              caption: message(json),
-              parse_mode: "HTML",
-              reply_markup: keyboard(),
-            },
-          );
-        } else {
-          await ctx.reply(
-            "<b>Woah, seems like server went offline 😢.</b>",
-            {
-              parse_mode: "HTML",
-            },
-          );
-        }
-      },
-    );
+    await ctx.reply(message(liveness, readiness), {
+      parse_mode: "HTML",
+      reply_markup: keyboard(),
+    });
   } catch (_) {
     await ctx.reply(
-      "<b>Woah, seems like I'm facing some issues 😢.</b>" + "\n" +
+      "<b>Woah, seems like I'm facing some issues 😢.</b>" +
+        "\n" +
         "I don't remember myself installing php, python or apache in my server 🧐",
       {
         parse_mode: "HTML",
-      },
+      }
     );
   }
 });
 
-composer.callbackQuery("mc", async (ctx: Context) => {
+composer.callbackQuery("git", async (ctx: Context) => {
   try {
-    await fetch("https://katsuki.moe/api/minecraft").then(
-      async (r: Response) => {
-        const json: Minecraft = await r.json();
+    const readiness: Readiness = await (
+      await fetch(
+        `https://cxsmxs.space/-/readiness?token=${process.env.GITLAB}&all=1`
+      )
+    ).json();
+    const liveness: Liveness = await (
+      await fetch(`https://cxsmxs.space/-/liveness?token=${process.env.GITLAB}`)
+    ).json();
 
-        if (json.status) {
-          await ctx.editMessageCaption(
-            {
-              caption: message(json),
-              parse_mode: "HTML",
-              reply_markup: keyboard(),
-            },
-          );
-        } else {
-          await ctx.editMessageText(
-            "<b>Woah, seems like server went offline 😢.</b>",
-            {
-              parse_mode: "HTML",
-            },
-          );
-        }
-      },
-    );
+    await ctx.editMessageText(message(liveness, readiness), {
+      parse_mode: "HTML",
+      reply_markup: keyboard(),
+    });
   } catch (_) {
     await ctx.editMessageText(
-      "<b>Woah, seems like I'm facing some issues 😢.</b>" + "\n" +
+      "<b>Woah, seems like I'm facing some issues 😢.</b>" +
+        "\n" +
         "I don't remember myself installing php, python or apache in my server 🧐",
       {
         parse_mode: "HTML",
-      },
+      }
     );
   }
 });

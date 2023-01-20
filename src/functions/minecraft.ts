@@ -19,16 +19,19 @@ export const message = (data: Minecraft): string =>
   `\n` +
   `${
     data.content.players.sample
-      ? data.content.players.sample.map((user) => `👾 <code>${user.name}</code>`)
-        .join("\n")
+      ? data.content.players.sample
+          .map((user) => `👾 <code>${user.name}</code>`)
+          .join("\n")
       : ""
   }`;
 
 export const keyboard = () =>
   new InlineKeyboard()
     .text("🔁 Refresh", "mc")
-    .url("🔴 Web (Live)", `https://katsuki.moe/minecraft`).row()
-    .url("📝 Rules of the server", `https://katsuki.moe/minecraft/rules`).row()
+    .url("🔴 Web (Live)", `https://katsuki.moe/minecraft`)
+    .row()
+    .url("📝 Rules of the server", `https://katsuki.moe/minecraft/rules`)
+    .row()
     .url("👾 Discord", "https://discord.gg/JkXFQpScFj")
     .url("🌐 Repository", `https://github.com/uwucraft`);
 
@@ -41,33 +44,30 @@ composer.command("mc", async (ctx: Context) => {
         if (json.status) {
           await ctx.replyWithPhoto(
             new InputFile({
-              url:
-                "https://raw.githubusercontent.com/katsuki-yuri/website/main/public/favicons/cxsmxs.png",
+              url: "https://raw.githubusercontent.com/katsuki-yuri/website/main/public/favicons/cxsmxs.png",
             }),
             {
               caption: message(json),
               parse_mode: "HTML",
               reply_markup: keyboard(),
-            },
+            }
           );
         } else {
-          await ctx.reply(
-            "<b>Woah, seems like server went offline 😢.</b>",
-            {
-              parse_mode: "HTML",
-            },
-          );
+          await ctx.reply("<b>Woah, seems like server went offline 😢.</b>", {
+            parse_mode: "HTML",
+          });
         }
-      },
+      }
     );
   } catch (_) {
-    console.error(_)
+    console.error(_);
     await ctx.reply(
-      "<b>Woah, seems like I'm facing some issues 😢.</b>" + "\n" +
+      "<b>Woah, seems like I'm facing some issues 😢.</b>" +
+        "\n" +
         "I don't remember myself installing php, python or apache in my server 🧐",
       {
         parse_mode: "HTML",
-      },
+      }
     );
   }
 });
@@ -79,30 +79,29 @@ composer.callbackQuery("mc", async (ctx: Context) => {
         const json: Minecraft = await r.json();
 
         if (json.status) {
-          await ctx.editMessageCaption(
-            {
-              caption: message(json),
-              parse_mode: "HTML",
-              reply_markup: keyboard(),
-            },
-          );
+          await ctx.editMessageCaption({
+            caption: message(json),
+            parse_mode: "HTML",
+            reply_markup: keyboard(),
+          });
         } else {
           await ctx.editMessageText(
             "<b>Woah, seems like server went offline 😢.</b>",
             {
               parse_mode: "HTML",
-            },
+            }
           );
         }
-      },
+      }
     );
   } catch (_) {
     await ctx.editMessageText(
-      "<b>Woah, seems like I'm facing some issues 😢.</b>" + "\n" +
+      "<b>Woah, seems like I'm facing some issues 😢.</b>" +
+        "\n" +
         "I don't remember myself installing php, python or apache in my server 🧐",
       {
         parse_mode: "HTML",
-      },
+      }
     );
   }
 });
