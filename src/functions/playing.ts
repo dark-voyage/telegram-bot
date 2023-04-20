@@ -10,10 +10,6 @@ export const message =
   `/help - <code>show this message</code>` +
   `\n` +
   `/blog - <code>listing blog posts</code>` +
-  `\n` +
-  `/playing - <code>musics i'm listening rn</code>` +
-  `\n` +
-  `/music - <code>listing blog posts</code>` +
   `\n`;
 
 export const keyboard = start.keyboard;
