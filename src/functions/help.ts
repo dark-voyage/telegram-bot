@@ -9,9 +9,7 @@ export const message =
   `\n` +
   `/help - <code>show this message</code>` +
   `\n` +
-  `/git - <code>get gitlab status</code>` +
-  `\n` +
-  `/mc - <code>minecraft server</code>` +
+  `/blog - <code>listing blog posts</code>` +
   `\n`;
 
 export const keyboard = start.keyboard;
