@@ -4,7 +4,7 @@ import * as start from "@/functions/start";
 const composer = new Composer();
 
 export const message =
-  `<b>Available commands:</b>` +
+  `<b>⚠️ Available commands:</b>` +
   `\n` +
   `\n` +
   `/help - <code>show this message</code>` +
