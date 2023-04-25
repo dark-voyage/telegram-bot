@@ -2,7 +2,7 @@
 <img src="https://www.katsuki.moe/favicons/pinned.svg" alt="logo" height="100" align="left">
 <h1 style="display: inline">Telegram Bot</h1>
 
-Telegram bot that uses Next.js API and Serverless.
+Telegram bot that uses Next.js API and Serverless (SWC for local development).
 
 [![GitHub top language](https://img.shields.io/github/languages/top/katsuki-yuri/telegram-bot?style=flat-square&logo=github)](https://github.com/katsuki-yuri/telegram-bot)
 [![Channel](https://img.shields.io/badge/Chat-grey?style=flat-square&logo=telegram)](https://t.me/yurionblog)
