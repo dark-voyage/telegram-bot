@@ -13,7 +13,7 @@ export const message =
   `\n` +
   `/playing - <code>music i'm listening</code>` +
   `\n` +
-  `/music - <code>listing blog posts</code>` +
+  `/playlist - <code>my collection of music</code>` +
   `\n`;
 
 export const keyboard = start.keyboard;

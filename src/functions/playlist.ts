@@ -54,39 +54,39 @@ composer.callbackQuery(/^playlist_(\d+)$/, async (ctx: Context) => {
   });
 });
 
-composer.callbackQuery(/^music_(\d+)_(.*)$/, async (ctx: Context) => {
-  const page = ctx.match![1];
-  const keyboard = new InlineKeyboard();
-
-  const request: Response = await fetch(endpoint);
-  const contents: Playlist = await request.json();
-  const result = contents.data.filter((com) => com.title === ctx.match![2]);
-
-  if (result.length) {
-    const data = result[0];
-
-    keyboard.url(`Stream the music`, data.url);
-
-    keyboard.row().text(`🔙 Back`, `playlist_${page}`);
-
-    await ctx.editMessageText(
-      `<b>${data.name} distro</b>` +
-        `\n` +
-        `\n` +
-        `<i>${data.about}</i>` +
-        `\n` +
-        `\n` +
-        `<b>Quyidagi havola yordamida sotsial tizimlariga o'ting:</b>`,
-      {
-        parse_mode: "HTML",
-        reply_markup: keyboard,
-      }
-    );
-  } else {
-    await ctx.editMessageText(`<b>The song can't be found in database!</b>`, {
-      parse_mode: "HTML",
-      reply_markup: new InlineKeyboard().text(`🔙 Back`, `playlist_${page}`),
-    });
-  }
-});
+// composer.callbackQuery(/^music_(\d+)_(.*)$/, async (ctx: Context) => {
+//   const page = ctx.match![1];
+//   const keyboard = new InlineKeyboard();
+//
+//   const request: Response = await fetch(endpoint);
+//   const contents: Playlist = await request.json();
+//   const result = contents.data.filter((com) => com.title === ctx.match![2]);
+//
+//   if (result.length) {
+//     const data = result[0];
+//
+//     keyboard.url(`Stream the music`, data.url);
+//
+//     keyboard.row().text(`🔙 Back`, `playlist_${page}`);
+//
+//     await ctx.editMessageText(
+//       `<b>${data.title} distro</b>` +
+//         `\n` +
+//         `\n` +
+//         `<i>${data.about}</i>` +
+//         `\n` +
+//         `\n` +
+//         `<b>Quyidagi havola yordamida sotsial tizimlariga o'ting:</b>`,
+//       {
+//         parse_mode: "HTML",
+//         reply_markup: keyboard,
+//       }
+//     );
+//   } else {
+//     await ctx.editMessageText(`<b>The song can't be found in database!</b>`, {
+//       parse_mode: "HTML",
+//       reply_markup: new InlineKeyboard().text(`🔙 Back`, `playlist_${page}`),
+//     });
+//   }
+// });
 export default composer;
