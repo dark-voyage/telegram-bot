@@ -11,7 +11,7 @@ export const message =
   `\n` +
   `/blog - <code>listing blog posts</code>` +
   `\n` +
-  `/playing - <code>musics i'm listening rn</code>` +
+  `/playing - <code>music i'm listening</code>` +
   `\n` +
   `/music - <code>listing blog posts</code>` +
   `\n`;

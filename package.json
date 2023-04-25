@@ -10,8 +10,8 @@
     "webhook:build": "next build",
     "webhook:start": "next start",
     "polling:dev": "concurrently \"pnpm run polling:build\" \"pnpm run polling:start\"",
-    "polling:build": "nodemon --watch \"src/**/*\" --exec \"swc src -d dist\"",
-    "polling:start": "nodemon --watch \"dist/**/*\" -e js ./dist/dev.js"
+    "polling:build": "swc src -d dist -w",
+    "polling:start": "nodemon --watch \"dist/**/*\" -e js ./dist/utils/dev.js"
   },
   "dependencies": {
     "@next/font": "13.1.2",

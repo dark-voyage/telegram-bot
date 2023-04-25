@@ -1,19 +1,9 @@
 import { Composer, Context, InlineKeyboard } from "grammy";
-
-interface Post {
-  title: string;
-  description: string;
-  slug: string;
-  date: string;
-  og: string;
-  body: null;
-}
-
-const pager = (json: Record<any, any>, page_number: number, page_size = 5) => {
-  return json.slice((page_number - 1) * page_size, page_number * page_size);
-};
+import { Post } from "@/types/serverless";
+import pager from "../utils/pager";
 
 const composer = new Composer();
+
 const ctxMenuText =
   `<b>Blog contents written by Yuri</b>` +
   `\n` +
@@ -22,11 +12,10 @@ const ctxMenuText =
 
 composer.command("blog", async (ctx: Context): Promise<void> => {
   const keyboard = new InlineKeyboard();
-  const contents: Post[] = await (
-    await fetch("https://katsuki.moe/api/blog")
-  ).json();
+  const request: Response = await fetch("https://katsuki.moe/api/blog");
+  const contents: Post[] = await request.json();
 
-  for (const post of pager(contents, 1)) {
+  for (const post of pager<Post>(contents, 1)) {
     keyboard.url(post.title, `https://katsuki.moe/blog/${post.slug}`).row();
   }
 
@@ -43,11 +32,10 @@ composer.command("blog", async (ctx: Context): Promise<void> => {
 composer.callbackQuery(/^blog_(\d+)$/, async (ctx: Context) => {
   const page = Number(ctx.match![1]);
   const keyboard = new InlineKeyboard();
-  const contents: Post[] = await (
-    await fetch("https://katsuki.moe/api/blog")
-  ).json();
+  const request: Response = await fetch("https://katsuki.moe/api/blog");
+  const contents: Post[] = await request.json();
 
-  for (const post of pager(contents, page)) {
+  for (const post of pager<Post>(contents, page)) {
     keyboard.url(post.title, `https://katsuki.moe/blog/${post.slug}`).row();
   }
 

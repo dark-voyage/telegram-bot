@@ -3,7 +3,7 @@ import { Composer, Context, InlineKeyboard } from "grammy";
 const composer = new Composer();
 
 export const message: string =
-  `<b>Welcome to my assistant bot!</b> \n` +
+  `<b>Welcome to my assistant bot! 👋🏻</b> \n` +
   `\n` +
   `This bot helps me to maintain some issues. ` +
   `Also, this bot will serve for me as a shortcut and automation.`;
