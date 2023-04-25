@@ -9,7 +9,7 @@ export const message: string =
   `Also, this bot will serve for me as a shortcut and automation.`;
 
 export const keyboard = new InlineKeyboard()
-  .url("✍🏻 Blog", "https://t.me/yurionblog")
+  .text("✍🏻 Blog", "blog_1")
   .url("🌐 Website", "https://katsuki.moe");
 
 composer.command("start", async (ctx: Context): Promise<void> => {
