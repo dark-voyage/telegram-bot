@@ -2,9 +2,9 @@ import { Composer, Context, InlineKeyboard } from "grammy";
 import { Spotify } from "@/types/serverless";
 import * as crypto from "crypto";
 
-const endpoint = "https://katsuki.moe/api/spotify/now-playing";
-const noImage = "https://katsuki.moe/favicons/no-music.png";
 const composer = new Composer();
+const noImage = "https://katsuki.moe/favicons/no-music.png";
+const endpoint = "https://katsuki.moe/api/spotify/now-playing";
 
 export const message = (spotify: Spotify) =>
   `🎵 <b>Now playing:</b>` +
