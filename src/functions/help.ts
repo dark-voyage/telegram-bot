@@ -25,4 +25,11 @@ composer.command("help", async (ctx: Context): Promise<void> => {
   });
 });
 
+composer.callbackQuery("help", async (ctx: Context): Promise<void> => {
+  await ctx.editMessageText(message, {
+    parse_mode: "HTML",
+    reply_markup: keyboard,
+  });
+});
+
 export default composer;

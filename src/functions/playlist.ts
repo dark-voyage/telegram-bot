@@ -79,26 +79,29 @@ composer.callbackQuery(/^music_(\d+)_(.*)$/, async (ctx: Context) => {
 
     keyboard.row().text(`🔙 Back`, `playlist_${page}`);
 
-    await ctx.editMessageMedia({
-      type: "photo",
-      media: data.image,
-      caption: `<b>${data.title}</b>` + `\n` + `<i>${data.description}</i>`,
-      parse_mode: "HTML"
-      }
-      ,
+    await ctx.editMessageMedia(
+      {
+        type: "photo",
+        media: data.image,
+        caption: `<b>${data.title}</b>` + `\n` + `<i>${data.description}</i>`,
+        parse_mode: "HTML",
+      },
       {
         reply_markup: keyboard,
       }
     );
   } else {
-    await ctx.editMessageMedia({
-      type: "photo",
-      media: noMusic,
-      caption: `<b>The song can't be found in the database!</b>`,
-      parse_mode: "HTML"
-    }, {
-      reply_markup: new InlineKeyboard().text(`🔙 Back`, `playlist_${page}`),
-    });
+    await ctx.editMessageMedia(
+      {
+        type: "photo",
+        media: noMusic,
+        caption: `<b>The song can't be found in the database!</b>`,
+        parse_mode: "HTML",
+      },
+      {
+        reply_markup: new InlineKeyboard().text(`🔙 Back`, `playlist_${page}`),
+      }
+    );
   }
 });
 
