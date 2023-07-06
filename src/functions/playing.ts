@@ -3,8 +3,8 @@ import { Spotify } from "@/types/serverless";
 import * as crypto from "crypto";
 
 const composer = new Composer();
-const noImage = "https://katsuki.moe/favicons/no-music.png";
-const endpoint = "https://katsuki.moe/api/spotify/now-playing";
+const noImage = "https://orzklv.uz/favicons/no-music.png";
+const endpoint = "https://orzklv.uz/api/spotify/now-playing";
 
 export const message = (spotify: Spotify) =>
   `🎵 <b>Now playing:</b>` +
@@ -25,7 +25,7 @@ composer.command("playing", async (ctx: Context): Promise<void> => {
   if (!content.isPlaying) {
     await ctx.replyWithPhoto(noImage, {
       parse_mode: "HTML",
-      caption: `Yuri is not listening to anything right now. Try again later!`,
+      caption: `Sokhib is not listening to anything right now. Try again later!`,
       reply_markup: new InlineKeyboard().text(`🔁 Refresh`, `playing`),
     });
   } else {
@@ -51,7 +51,7 @@ composer.callbackQuery("playing", async (ctx: Context): Promise<void> => {
         media: noImage,
         parse_mode: "HTML",
         caption:
-          `Yuri is not listening to anything right now. Try again later!` +
+          `Sokhibjon is not listening to anything right now. Try again later!` +
           `\n` +
           `\n` +
           `<code>Update #${crypto.randomInt(10000, 99999)}</code>`,

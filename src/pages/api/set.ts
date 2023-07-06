@@ -10,7 +10,7 @@ export default async function handler(
   console.log("Initialized instance successfully");
 
   // Create an address string containing the location
-  const address: string = "https://bot.katsuki.moe/api/bot";
+  const address: string = "https://bot.orzklv.uz/api/bot";
 
   // Try to set up webhook address
   try {

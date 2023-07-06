@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Yuri&#39;s Telegram</title>
+        <title>Sokhibjon&#39;s Telegram</title>
         <meta
           name="description"
           content="Telegram bot application written on Next.js"
@@ -21,19 +21,19 @@ export default function Home() {
         <div className={styles.description}>
           <p>
             Telegram bot is working at&nbsp;
-            <code className={styles.code}>@yurioonbot</code>
+            <code className={styles.code}>@orzklvbot</code>
           </p>
           <div>
             <a
-              href="https://katsuki.moe"
+              href="https://orzklv.uz"
               target="_blank"
               rel="noopener noreferrer"
             >
               By{" "}
               <Image
-                src="/yuri-text.svg"
-                alt="Yuri"
-                className={styles.yuriLogo}
+                src="/sakhib-text.svg"
+                alt="Sokhibjon"
+                className={styles.sakhibLogo}
                 width={100}
                 height={28}
                 priority
@@ -44,13 +44,13 @@ export default function Home() {
 
         <div className={styles.center}>
           <div className={styles.thirteen}>
-            <Image src="/yuri.svg" alt="Yuri" width={60} height={60} priority />
+            <Image src="/sakhib.svg" alt="Sokhibjon" width={60} height={60} priority />
           </div>
         </div>
 
         <div className={styles.grid}>
           <a
-            href="https://github.com/katsuki-yuri/telegram-bot"
+            href="https://github.com/orzklv/telegram-bot"
             className={styles.card}
             target="_blank"
             rel="noopener noreferrer"
@@ -62,7 +62,7 @@ export default function Home() {
           </a>
 
           <a
-            href="https://t.me/yurioonbot"
+            href="https://t.me/orzklvbot"
             className={styles.card}
             target="_blank"
             rel="noopener noreferrer"
@@ -74,7 +74,7 @@ export default function Home() {
           </a>
 
           <a
-            href="https://github.com/katsuki-yuri"
+            href="https://github.com/orzklv.uz"
             className={styles.card}
             target="_blank"
             rel="noopener noreferrer"
@@ -82,11 +82,11 @@ export default function Home() {
             <h2 className={inter.className}>
               GitHub <span>-&gt;</span>
             </h2>
-            <p className={inter.className}>Visit Yuri&#39;s GitHub page.</p>
+            <p className={inter.className}>Visit Sokhibjon&#39;s GitHub page.</p>
           </a>
 
           <a
-            href="https://t.me/yurionblog"
+            href="https://t.me/orzklvb"
             className={styles.card}
             target="_blank"
             rel="noopener noreferrer"
@@ -95,7 +95,7 @@ export default function Home() {
               Channel <span>-&gt;</span>
             </h2>
             <p className={inter.className}>
-              Visit Yuri&#39;s channel on Telegram.
+              Visit Sokhibjon&#39;s channel on Telegram.
             </p>
           </a>
         </div>

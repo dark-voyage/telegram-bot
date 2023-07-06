@@ -3,12 +3,12 @@ import { Music, Playlist } from "@/types/serverless";
 import pager from "../utils/pager";
 
 const composer = new Composer();
-const noImage = "https://katsuki.moe/favicons/playlist.png";
-const noMusic = "https://katsuki.moe/favicons/no-music.png";
-const endpoint = "https://katsuki.moe/api/music";
+const noImage = "https://orzklv.uz/favicons/playlist.png";
+const noMusic = "https://orzklv.uz/favicons/no-music.png";
+const endpoint = "https://orzklv.uz/api/music";
 
 const ctxMenuText =
-  `<b>Favorite handpicked music list by Yuri</b>` +
+  `<b>Favorite handpicked music list by Sokhibjon</b>` +
   `\n` +
   `\n` +
   `Please, choose one of the following options:`;

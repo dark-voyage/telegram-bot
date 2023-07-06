@@ -17,7 +17,7 @@ export const message =
   `\n` +
   `/socials - <code>social networks</code>` +
   `\n` +
-  `/sponsors - <code>motivation for yuri</code>` +
+  `/sponsors - <code>motivation for sokhibjon</code>` +
   `\n`;
 
 export const keyboard = start.keyboard;

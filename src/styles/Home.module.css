@@ -258,7 +258,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  .yuriLogo {
+  .sakhibLogo {
     filter: invert(1);
   }
 
