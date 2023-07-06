@@ -44,7 +44,13 @@ export default function Home() {
 
         <div className={styles.center}>
           <div className={styles.thirteen}>
-            <Image src="/sakhib.svg" alt="Sokhibjon" width={60} height={60} priority />
+            <Image
+              src="https://orzklv.uz/favicons/logo.png"
+              alt="Sokhibjon"
+              width={60}
+              height={60}
+              priority
+            />
           </div>
         </div>
 
@@ -82,7 +88,9 @@ export default function Home() {
             <h2 className={inter.className}>
               GitHub <span>-&gt;</span>
             </h2>
-            <p className={inter.className}>Visit Sokhibjon&#39;s GitHub page.</p>
+            <p className={inter.className}>
+              Visit Sokhibjon&#39;s GitHub page.
+            </p>
           </a>
 
           <a
